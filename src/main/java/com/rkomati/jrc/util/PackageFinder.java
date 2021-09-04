@@ -1,5 +1,7 @@
 package com.rkomati.jrc.util;
 
+import com.rkomati.jrc.exception.CompilationFailureException;
+
 import javax.tools.JavaFileObject;
 import java.io.File;
 import java.io.IOException;
@@ -8,6 +10,7 @@ import java.net.URI;
 import java.net.URL;
 import java.util.*;
 import java.util.jar.JarEntry;
+import java.util.regex.Pattern;
 
 import static javax.tools.JavaFileObject.Kind.CLASS;
 
@@ -18,8 +21,9 @@ public class PackageFinder {
         this.classLoader = classLoader;
     }
 
-    public Iterable<JavaFileObject> find(String packageName) throws IOException {
-        String javaPackageName = packageName.replaceAll("\\.", "/");
+    public Iterable<JavaFileObject> find(String packageName) throws IOException, CompilationFailureException {
+        Pattern pattern = Pattern.compile("\\.");
+        String javaPackageName = pattern.matcher(packageName).replaceAll("/");
         List<JavaFileObject> javaFileObjects = new ArrayList<>();
 
         Enumeration<URL> urlEnumeration = classLoader.getResources(javaPackageName);
@@ -30,7 +34,7 @@ public class PackageFinder {
         return javaFileObjects;
     }
 
-    private Collection<? extends JavaFileObject> getFileObjectsFromPackageURL(String packageName, URL packageURL) {
+    private Collection<? extends JavaFileObject> getFileObjectsFromPackageURL(String packageName, URL packageURL) throws CompilationFailureException {
         File directory = new File(packageURL.getFile());
         return directory.isDirectory() ? processDirectory(packageName, directory) : processJar(packageURL);
     }
@@ -48,7 +52,7 @@ public class PackageFinder {
     }
 
 
-    private List<JavaFileObject> processJar(URL packageURL) {
+    private List<JavaFileObject> processJar(URL packageURL) throws CompilationFailureException {
         List<JavaFileObject> javaFileObjects = new ArrayList<>();
         try {
             String externalForm = packageURL.toExternalForm();
@@ -64,13 +68,13 @@ public class PackageFinder {
                 String name = entry.getName();
                 if (name.startsWith(rootEntryName) && name.indexOf('/', rootEnd) == -1 && name.endsWith(CLASS.extension)) {
                     URI uri = URI.create(jarURI + "!/" + name);
-                    String binaryName = name.replaceAll("/", ".");
+                    String binaryName = name.replace('/', '.');
                     binaryName = binaryName.replaceAll(CLASS.extension + "$", "");
                     javaFileObjects.add(new CustomFileObject(binaryName, uri));
                 }
             }
         } catch (Exception e) {
-            throw new RuntimeException(String.format("Failed to open %s as a jar file", packageURL), e);
+            throw new CompilationFailureException(String.format("Failed to open %s as a jar file", packageURL), e);
         }
         return javaFileObjects;
     }
