@@ -1,4 +1,4 @@
-package com.rkomati.jrc.util;
+package com.github.komatiraju032.jrc.util;
 
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.NestingKind;

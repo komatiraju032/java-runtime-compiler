@@ -1,6 +1,6 @@
-package com.rkomati.jrc.compiler;
+package com.github.komatiraju032.jrc.compiler;
 
-import com.rkomati.jrc.util.CustomFileManager;
+import com.github.komatiraju032.jrc.util.CustomFileManager;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +17,9 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 
 public class RuntimeCompiler {
+
+    private RuntimeCompiler() {
+    }
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RuntimeCompiler.class);
 
@@ -43,10 +46,10 @@ public class RuntimeCompiler {
         JavaFileManager fileManager = new CustomFileManager(classLoader, standardJavaFileManager);
         JavaCompiler.CompilationTask task = compiler.getTask(null, fileManager, listener, Arrays.asList("-d", targetFolderPath.toString()), null, standardJavaFileManager.getJavaFileObjects(file));
 
-        if (!task.call()) {
-            listener.getDiagnostics().forEach(d -> LOGGER.info(d.getMessage(null)));
-        } else {
+        if (task.call().equals(Boolean.TRUE)) {
             LOGGER.info("Compilation completed successfully!");
+        } else {
+            listener.getDiagnostics().forEach(d -> LOGGER.info(d.getMessage(null)));
         }
 
         URLClassLoader urlClassLoader = new URLClassLoader(new URL[]{targetFolderPath.toUri().toURL()}, classLoader);

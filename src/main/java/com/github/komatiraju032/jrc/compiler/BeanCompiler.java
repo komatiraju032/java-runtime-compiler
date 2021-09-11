@@ -1,4 +1,4 @@
-package com.rkomati.jrc.compiler;
+package com.github.komatiraju032.jrc.compiler;
 
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.stereotype.Component;
