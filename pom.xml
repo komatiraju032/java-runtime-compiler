@@ -8,7 +8,7 @@
         <version>2.5.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.raju</groupId>
+    <groupId>com.github.komatiraju032</groupId>
     <artifactId>java-runtime-compiler</artifactId>
     <version>1.0.0</version>
     <name>java-runtime-compiler</name>
