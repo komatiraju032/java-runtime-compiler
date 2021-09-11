@@ -1,6 +1,6 @@
-package com.rkomati.jrc.compiler;
+package com.github.komatiraju032.jrc.compiler;
 
-import com.rkomati.jrc.util.CustomFileManager;
+import com.github.komatiraju032.jrc.util.CustomFileManager;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.rkomati.jrc.util;
+package com.github.komatiraju032.jrc.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

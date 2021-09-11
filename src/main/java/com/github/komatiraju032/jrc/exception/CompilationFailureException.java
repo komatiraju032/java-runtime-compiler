@@ -1,4 +1,4 @@
-package com.rkomati.jrc.exception;
+package com.github.komatiraju032.jrc.exception;
 
 public class CompilationFailureException extends Exception {
 

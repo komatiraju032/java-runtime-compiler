@@ -1,6 +1,6 @@
-package com.rkomati.jrc.util;
+package com.github.komatiraju032.jrc.util;
 
-import com.rkomati.jrc.exception.CompilationFailureException;
+import com.github.komatiraju032.jrc.exception.CompilationFailureException;
 
 import javax.tools.JavaFileObject;
 import java.io.File;
