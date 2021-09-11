@@ -9,7 +9,7 @@ Class<?> cls = RuntimeCompiler.compile(sourceCodeString, "fullyqualifiedClassNam
 Class<?> cls = RuntimeCompiler.compile(Paths.get("filePath"), "fullyqualifiedClassName");
 ```
 
-For compiling class that uses spring annotations
+For compiling class that uses spring annotations or spring beans
 ```java
 Object obj = beanCompiler.compileAndGetSpringBean(sourceCodeString, "fullyqualifiedClassName");
 
