@@ -1,6 +1,6 @@
-package com.github.komatiraju032.jrc.compiler;
+package com.raju.jrc.compiler;
 
-import com.github.komatiraju032.jrc.util.CustomFileManager;
+import com.raju.jrc.util.CustomFileManager;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

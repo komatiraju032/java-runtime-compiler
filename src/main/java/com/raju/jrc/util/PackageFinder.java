@@ -1,6 +1,6 @@
-package com.github.komatiraju032.jrc.util;
+package com.raju.jrc.util;
 
-import com.github.komatiraju032.jrc.exception.CompilationFailureException;
+import com.raju.jrc.exception.CompilationFailureException;
 
 import javax.tools.JavaFileObject;
 import java.io.File;

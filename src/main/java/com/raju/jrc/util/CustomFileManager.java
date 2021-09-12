@@ -1,4 +1,4 @@
-package com.github.komatiraju032.jrc.util;
+package com.raju.jrc.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

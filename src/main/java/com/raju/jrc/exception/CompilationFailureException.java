@@ -1,4 +1,4 @@
-package com.github.komatiraju032.jrc.exception;
+package com.raju.jrc.exception;
 
 public class CompilationFailureException extends Exception {
 

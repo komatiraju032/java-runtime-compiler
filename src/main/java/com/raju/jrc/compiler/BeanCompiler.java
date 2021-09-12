@@ -1,4 +1,4 @@
-package com.github.komatiraju032.jrc.compiler;
+package com.raju.jrc.compiler;
 
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.stereotype.Component;

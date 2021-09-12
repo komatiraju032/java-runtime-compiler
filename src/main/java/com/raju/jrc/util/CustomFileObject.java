@@ -1,4 +1,4 @@
-package com.github.komatiraju032.jrc.util;
+package com.raju.jrc.util;
 
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.NestingKind;
